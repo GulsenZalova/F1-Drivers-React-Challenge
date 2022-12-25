@@ -42,13 +42,18 @@ function Drivers() {
         }
     }
     return (
-        <div className='driver'>
-            <div>{count}/9</div>
+       <div className='container'>
+         <div className='driver'>
+            <div className='pageCount'>Page {count} of 9</div>
             {
                 isloading ? (
-                    <div className="loader"></div>
+                   <div className='loaderDiv'>
+                     <div className="loader"></div>
+                   </div>
                 ) : (
-                    <table>
+                    <>
+
+<table>
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -70,31 +75,33 @@ function Drivers() {
                                         <td>{element.skin_color}</td>
                                         <td>{element.hair_color}</td>
                                         <td style={{ color: element.gender == "female" ? "red" : "blue" }}>{element.gender}</td>
-                                        <td><button onClick={() => addFavorites(element)}>Add Favotites</button></td>
+                                        <td><button className='btn addBTN' onClick={() => addFavorites(element)}>Add Favotites</button></td>
                                     </tr>
                                 ))
 
                             }
                         </tbody>
                     </table>
-
+                         <div className='controller'>
+                         <button style={{ display: count == 1 ? "none" : "block" }} onClick={() => prev()}>Prev</button>
+                         <button style={{ display: count == 9 ? "none" : "block" }} onClick={() => next()}>Next</button>
+                     </div>
+                    </>
                 )
             }
-            <div>
-                <button style={{ display: count == 1 ? "none" : "block" }} onClick={() => prev()}>Prev</button>
-                <button style={{ display: count == 9 ? "none" : "block" }} onClick={() => next()}>Next</button>
-            </div>
+       
 
         {
             toast &&(
                 <div id="toasts">
-                <div className="toast ${situation}-toast">
-                    <p className="message">Add Favorites</p>
+                <div className="toast success-toast">
+                    <p className="message">Success Add</p>
                 </div>
             </div>
             )
         }
         </div>
+       </div>
     )
 }
 

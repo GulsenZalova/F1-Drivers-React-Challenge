@@ -19,9 +19,9 @@ function Favorites() {
      },1000)
   }
   return (
-    <div>
+    <div className='container'>
         <div className='driver'>
-        <button onClick={()=>allFavoritesDelete()}>All Favotites</button>
+        <div className='allDelete'><button className='btn deleteBTN' onClick={()=>allFavoritesDelete()}>All Favotites</button></div>
             {
               (
                     <table>
@@ -46,7 +46,7 @@ function Favorites() {
                                         <td>{element.skin_color}</td>
                                         <td>{element.hair_color}</td>
                                         <td style={{ color: element.gender == "female" ? "red" : "blue" }}>{element.gender}</td>
-                                        <td><button onClick={() => deleteFavorites(element.name)}>Delete Favotites</button></td>
+                                        <td><button className='btn deleteBTN' onClick={() => deleteFavorites(element.name)}>Delete Favorite</button></td>
                                     </tr>
                                 ))
 
@@ -60,8 +60,8 @@ function Favorites() {
         {
             toast &&(
                 <div id="toasts">
-                <div className="toast ${situation}-toast">
-                    <p className="message">Deleted Favorites</p>
+                <div className="toast success-toast">
+                    <p className="message">Success Delete</p>
                 </div>
             </div>
             )
